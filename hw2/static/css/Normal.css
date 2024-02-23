@@ -45,7 +45,7 @@ body {
 
 .legend-item {
     font-size: 28px;
-    cursor: default;
+    cursor: pointer;
 }
 
 .overlay-parent {
