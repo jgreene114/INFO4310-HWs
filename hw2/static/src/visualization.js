@@ -115,7 +115,7 @@ const createRadialChart = async function (selection, svg, data, topNOrder, color
     let maxValue = d3.max(data, d => d3.max(Object.keys(d).filter(key => key !== 'group'), key => +d[key]));
     let radialScale = d3.scaleLinear()
         .domain([0, maxValue])
-        .range([outerRadius, innerRadius]);
+        .range([innerRadius + 2, outerRadius]);
     let lineGenerator = d3.lineRadial()
         .angle(d => angleScale(d.group))
         .radius(d => radialScale(d.value))
@@ -183,6 +183,7 @@ const createRadialChart = async function (selection, svg, data, topNOrder, color
         .style("fill", monthTextColor);
 
     innerCircleG.append("circle")
+        .attr("class", "inner-circle")
         .attr("cx", 0)
         .attr("cy", 0)
         .attr("r", innerRadius)
@@ -613,6 +614,9 @@ const removeSummary = async function () {
             subDivs.remove()
         })
 }
+
+
+// animateInnerCircle()
 
 const requestData = async function () {
     pathStart = "../static/data/daily-data/"
