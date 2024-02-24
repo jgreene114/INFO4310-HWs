@@ -366,6 +366,7 @@ const createLegend = async function (selection, div, colorScale, weeklyData, top
                     let currentOrder = d3.select(this).attr('item-order');
                     return colorScale(currentOrder);
                 })
+                .style("font-size", legendTextSizeNormal)
                 .style("opacity", 1)
 
             d3.selectAll(".data-line")
